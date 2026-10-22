@@ -1,0 +1,44 @@
+name: Sync Rates from NerkhFA Channel
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  TZ: Asia/Tehran
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Sync rates from channel
+        run: python tools/nerkhfa_sync.py
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- market.json; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add market.json
+          git commit -m "chore(auto): sync rates from @NerkhFA [skip ci]"
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              break
+            fi
+            sleep 5
+          done
