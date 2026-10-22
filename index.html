@@ -26,6 +26,7 @@
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <style>
         body { font-family: 'Vazirmatn', sans-serif; background-color: #0b0f19; color: #f1f5f9; }
@@ -88,6 +89,10 @@
                             <span id="activePrice" class="text-3xl sm:text-4xl font-black text-white font-mono">---</span>
                             <span id="activeUnit" class="text-sm font-medium text-slate-400">تومان</span>
                         </div>
+                    </div>
+                    <div id="bubbleBadge" class="hidden">
+                        <span class="text-[11px] text-slate-400 block">حباب سکه (نسبت به ارزش ذاتی طلا):</span>
+                        <span id="bubbleValue" class="text-lg font-bold font-mono"></span>
                     </div>
 
                     <button onclick="copyShareLink()" class="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">
@@ -272,7 +277,16 @@
             return toPersianDigits(formatted);
         };
 
+        const COIN_WEIGHTS = { coin_emami: 8.133, coin_bahar: 8.133, coin_half: 4.0665, coin_quarter: 2.03325, coin_gram: 1.01 };
+        function coinBubble(key) {
+            const w = COIN_WEIGHTS[key]; const g = Number(marketData.gold_18k); const p = Number(marketData[key]);
+            if (!w || !g || !p) return null;
+            const intr = g * 1.2 * w;
+            return { pct: (p - intr) / intr * 100, intr };
+        }
+
         async function initApp() {
+            try { if (window.Telegram && Telegram.WebApp) { Telegram.WebApp.ready(); Telegram.WebApp.expand(); } } catch (e) {}
             const hash = window.location.hash.replace('#', '').trim();
             if (hash && ALL_ASSETS[hash]) activeAssetKey = hash;
 
@@ -328,6 +342,7 @@
                         <span class="text-sm sm:text-base font-black text-white font-mono">${formatNumber(price, cfg.unit === 'دلار')}</span>
                         <span class="text-[10px] text-slate-400">${unit}</span>
                     </div>
+                    ${(() => { const b = coinBubble(key); if (!b) return ''; return `<div class="text-[10px] mt-1.5 ${b.pct >= 0 ? 'text-rose-400' : 'text-emerald-400'}">🫧 حباب: ${b.pct >= 0 ? '+' : ''}${toPersianDigits(b.pct.toFixed(1))}٪</div>`; })()}
                 `;
                 grid.appendChild(card);
             }
@@ -370,6 +385,16 @@
             document.getElementById('activeSymbol').textContent = `${cfg.symbol} / ${unit.toUpperCase()}`;
             document.getElementById('activeUnit').textContent = unit;
             document.getElementById('activePrice').textContent = formatNumber(currentPrice, unit === "دلار");
+            const bb = document.getElementById('bubbleBadge');
+            const cb = coinBubble(activeAssetKey);
+            if (cb) {
+                bb.classList.remove('hidden');
+                const bv = document.getElementById('bubbleValue');
+                bv.textContent = `${cb.pct >= 0 ? '+' : ''}${toPersianDigits(cb.pct.toFixed(1))}٪`;
+                bv.className = `text-lg font-bold font-mono ${cb.pct >= 0 ? 'text-rose-400' : 'text-emerald-400'}`;
+            } else {
+                bb.classList.add('hidden');
+            }
 
             const loader = document.getElementById('chartLoader');
             loader.classList.remove('hidden');
