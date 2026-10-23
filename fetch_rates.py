@@ -356,14 +356,14 @@ def generate_share_pages(market_data):
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>{cfg['title']} ({price_str}) | نبض بازار</title>
+    <title>{cfg['title']} ({price_str}) | نرخ</title>
     <meta name="description" content="قیمت زنده {cfg['title']} در بازار آزاد: {price_str} | مشاهده نمودار و وب‌سرویس">
 
     <!-- Open Graph (Telegram & WhatsApp) -->
     <meta property="og:type" content="article">
-    <meta property="og:site_name" content="نبض بازار">
+    <meta property="og:site_name" content="نرخ">
     <meta property="og:title" content="{cfg['title']}: {price_str}">
-    <meta property="og:description" content="قیمت لحظه‌ای {cfg['title']}: {price_str} | نمودار روند ۶ ماهه، بررسی حباب و تاریخچه کامل در نبض بازار">
+    <meta property="og:description" content="قیمت لحظه‌ای {cfg['title']}: {price_str} | نمودار روند ۶ ماهه، بررسی حباب و تاریخچه کامل در نرخ">
     <meta property="og:image" content="{chart_image_url}">
     <meta property="og:image:secure_url" content="{chart_image_url}">
     <meta property="og:image:type" content="image/png">
@@ -379,13 +379,13 @@ def generate_share_pages(market_data):
 <body style="background:#0b0f19;color:#fff;font-family:sans-serif;padding:30px 15px;text-align:center;">
     <article>
         <h1 style="font-size:22px;margin-bottom:8px;">{cfg['title']} ({price_str})</h1>
-        <p style="color:#94a3b8;font-size:13px;margin-bottom:20px;">در حال انتقال به داشبورد تحلیلی نبض بازار...</p>
+        <p style="color:#94a3b8;font-size:13px;margin-bottom:20px;">در حال انتقال به داشبورد تحلیلی نرخ...</p>
         <div style="max-width:850px;margin:0 auto 25px auto;">
             <img src="{chart_image_url}" alt="{cfg['title']}" style="width:100%;height:auto;border-radius:12px;border:1px solid #1e293b;">
         </div>
         <p>
             <a href="../#{key}" style="display:inline-block;background:#2563eb;color:#fff;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:14px;">
-                📊 مشاهده نمودار تعاملی در داشبورد نبض بازار
+                📊 مشاهده نمودار تعاملی در داشبورد نرخ
             </a>
         </p>
     </article>
@@ -408,7 +408,7 @@ def update_readme(market_data):
 
     readme_content = f"""<div dir="rtl" align="center">
 
-# 📊 نبض بازار | قیمت لحظه‌ای و تاریخچه ارز، طلا و سکه
+# 📊 نرخ | قیمت لحظه‌ای و تاریخچه ارز، طلا و سکه
 
 [![Auto Update](https://img.shields.io/badge/Auto--Update-Every_5_Minutes-10b981?style=for-the-badge&logo=githubactions&logoColor=white)](#)
 [![API Status](https://img.shields.io/badge/API-Live_&_Free-3b82f6?style=for-the-badge&logo=json&logoColor=white)](#-وب‌سرویس-و-دسترسی-api)
@@ -578,7 +578,7 @@ def update_readme(market_data):
 ---
 
 <div align="center">
-<sub>ساخته‌شده با ❤️ توسط <a href="https://github.com/Ashollii">Ashollii</a> | داده‌ها به صورت خودکار هر ۳۰ دقیقه بروزرسانی می‌شوند | بر پایهٔ پروژهٔ متن‌باز <a href="https://github.com/itsyebekhe/nabz">نبض بازار</a></sub>
+<sub>ساخته‌شده با ❤️ توسط <a href="https://github.com/Ashollii">Ashollii</a> | داده‌ها به صورت خودکار هر ۳۰ دقیقه بروزرسانی می‌شوند</sub>
 </div>
 
 </div>
