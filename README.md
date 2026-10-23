@@ -10,7 +10,7 @@
 <br/>
 
 > [!NOTE]
-> 📅 **تاریخ:** ۱ آبان ۱۴۰۵ (2026-10-23) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۱۳:۲۵** (به وقت تهران)
+> 📅 **تاریخ:** ۱ آبان ۱۴۰۵ (2026-10-23) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۱۴:۳۲** (به وقت تهران)
 
 <br/>
 
@@ -67,7 +67,7 @@
 <tr>
 <td align="center">🇦🇺</td>
 <td><b>دلار استرالیا</b></td>
-<td align="left"><b>۱۹۲،۴۰۰ تومان</b></td>
+<td align="left"><b>۱۹۲،۵۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇳</td>
@@ -107,17 +107,17 @@
 <tr>
 <td align="center">✨</td>
 <td><b>طلای ۱۸ عیار (هر گرم)</b></td>
-<td align="left"><b>۲۶،۹۴۰،۳۰۰ تومان</b></td>
+<td align="left"><b>۲۶،۹۲۴،۱۴۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">⚖️</td>
 <td><b>مثقال طلا (آبشده)</b></td>
-<td align="left"><b>۱۱۶،۷۰۰،۰۰۰ تومان</b></td>
+<td align="left"><b>۱۱۶،۶۳۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🌐</td>
 <td><b>انس جهانی طلا</b></td>
-<td align="left"><b>۴،۰۲۳.۳۵ دلار</b></td>
+<td align="left"><b>۴،۰۲۵.۵۳ دلار</b></td>
 </tr>
 
 <!-- کامودیتی -->
@@ -127,7 +127,7 @@
 <tr>
 <td align="center">⛽</td>
 <td><b>نفت خام برنت / اوپک</b></td>
-<td align="left"><b>۱۰۱.۲۶ دلار</b></td>
+<td align="left"><b>۱۰۰.۹۰ دلار</b></td>
 </tr>
 
 </tbody>
