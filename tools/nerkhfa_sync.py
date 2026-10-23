@@ -8,6 +8,11 @@ than market.json, patches the covered fields in place. The workflow
 then commits. Fields the channel does not post (gbp, try, oil, ...)
 stay as the hourly fetch workflow set them.
 Exit 0 = patched or cleanly skipped; exit 2 = fetch/parse error.
+
+2026-10-23 format change: the channel removed the "دلار آمریکا فروش"
+line from the board posts; USD now comes from the separate
+"دلار فردایی تهران ... فروش" posts. Board detection anchors on
+"لحظه بروزرسانی" + gold_18k instead of the USD line.
 """
 import html as ihtml
 import json
@@ -25,6 +30,9 @@ FA_DIGITS = str.maketrans("۰۱۲۳۴۵۶۷۸۹", "0123456789")
 JMONTHS = {"فروردین": 1, "اردیبهشت": 2, "خرداد": 3, "تیر": 4, "مرداد": 5,
            "شهریور": 6, "مهر": 7, "آبان": 8, "آذر": 9, "دی": 10,
            "بهمن": 11, "اسفند": 12}
+# Invisible/formatting chars that break label and number matching
+# (ZWNJ, ZWJ, Arabic kashida as in "خـرید")
+FORMAT_CHARS = re.compile(r"[‌‍ـ]")
 
 
 def fetch(url):
@@ -39,7 +47,8 @@ def post_text(chunk):
         return ""
     t = re.sub(r"<br\s*/?>", "\n", m.group(1))
     t = re.sub(r"<[^>]+>", " ", t)
-    return re.sub(r"\s+", " ", ihtml.unescape(t)).strip()
+    t = re.sub(r"\s+", " ", ihtml.unescape(t)).strip()
+    return FORMAT_CHARS.sub("", t)
 
 
 def num_after(text, label):
@@ -54,7 +63,7 @@ def num_after(text, label):
 
 def parse_board(text):
     d = {}
-    d["usd"] = num_after(text, "دلار آمریکا فروش")
+    d["usd"] = num_after(text, "دلار آمریکا فروش")  # legacy board line; may be absent
     d["eur"] = num_after(text, "یورو فروش")
     d["cad"] = num_after(text, "دلار کانادا فروش")
     d["aed"] = num_after(text, "درهم امارات")
@@ -72,6 +81,17 @@ def parse_board(text):
         if jm_name in JMONTHS:
             d["_jalali"] = (int(jy), JMONTHS[jm_name], int(jd), int(hh), int(mm))
     return {k: v for k, v in d.items() if v is not None}
+
+
+def parse_fardayi_sell(text):
+    """Sell price from a 'دلار فردایی تهران ... فروش' post."""
+    m = re.search(r"فردایی[^\d]*([\d,]+)\s*خرید.*?([\d,]+)\s*فروش", text)
+    if not m:
+        return None
+    try:
+        return int(m.group(2).replace(",", ""))
+    except ValueError:
+        return None
 
 
 def to_epoch(v):
@@ -96,6 +116,7 @@ def main():
         return 2
     chunks = re.split(r'data-post="NerkhFA/\d+"', page)[1:]
     boards = []
+    fardayi = []  # (epoch, usd sell)
     ounce = None
     for ch in chunks:
         tm = re.search(r'datetime="([^"]+)"', ch)
@@ -106,10 +127,14 @@ def main():
         except Exception:
             continue
         text = post_text(ch)
-        if "دلار آمریکا فروش" in text and "لحظه بروزرسانی" in text:
+        if "لحظه بروزرسانی" in text:
             b = parse_board(text)
-            if b.get("usd") and b.get("gold_18k"):
+            if b.get("gold_18k"):
                 boards.append((epoch, b))
+        if "دلار فردایی" in text:
+            v = parse_fardayi_sell(text)
+            if v:
+                fardayi.append((epoch, v))
         if "اونس طلا" in text:
             v = num_after(text, "اونس طلا")
             if v:
@@ -119,6 +144,13 @@ def main():
         return 2
     boards.sort(key=lambda x: x[0])
     b_epoch, board = boards[-1]
+    # USD: newest فردایی sell price close in time to the board
+    if fardayi:
+        fardayi.sort(key=lambda x: x[0])
+        f_epoch, f_sell = fardayi[-1]
+        if abs(f_epoch - b_epoch) <= 7200:
+            board["usd"] = f_sell
+            print(f"INFO usd from fardayi post {datetime.fromtimestamp(f_epoch, TEHRAN):%H:%M}: {f_sell}")
 
     with open(MARKET_PATH, encoding="utf-8") as f:
         market = json.load(f)
@@ -146,7 +178,7 @@ def main():
     if ounce and ounce[0] >= b_epoch - 3600 and market.get("usd_xau"):
         if abs(ounce[1] - float(market["usd_xau"])) / float(market["usd_xau"]) <= 0.12:
             patched["usd_xau"] = ounce[1]
-    if "usd" not in patched or "gold_18k" not in patched:
+    if "gold_18k" not in patched:
         print("RESULT error anchor fields failed sanity")
         return 2
 
