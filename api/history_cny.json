@@ -3,10 +3,10 @@
   "title": "یوان چین",
   "unit": "تومان",
   "timezone": "Asia/Tehran",
-  "updated_at": "2026-10-26 03:35:10",
+  "updated_at": "2026-10-26 04:47:38",
   "total_records": 1192,
   "latest": {
-    "timestamp": 1792973110,
+    "timestamp": 1792977458,
     "date": "2026-10-26",
     "price": 40740,
     "price_toman": 40740,
@@ -8351,7 +8351,7 @@
       "price_irr": 407400
     },
     {
-      "timestamp": 1792973110,
+      "timestamp": 1792977458,
       "date": "2026-10-26",
       "price": 40740,
       "price_toman": 40740,
