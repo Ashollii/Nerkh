@@ -3,10 +3,10 @@
   "title": "دینار بحرین",
   "unit": "تومان",
   "timezone": "Asia/Tehran",
-  "updated_at": "2026-10-29 03:47:52",
+  "updated_at": "2026-10-29 05:02:46",
   "total_records": 1195,
   "latest": {
-    "timestamp": 1793233072,
+    "timestamp": 1793237566,
     "date": "2026-10-29",
     "price": 716140,
     "price_toman": 716140,
@@ -8372,7 +8372,7 @@
       "price_irr": 7161400
     },
     {
-      "timestamp": 1793233072,
+      "timestamp": 1793237566,
       "date": "2026-10-29",
       "price": 716140,
       "price_toman": 716140,
