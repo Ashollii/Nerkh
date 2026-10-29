@@ -3,14 +3,14 @@
   "title": "ریال قطر",
   "unit": "تومان",
   "timezone": "Asia/Tehran",
-  "updated_at": "2026-10-29 15:47:33",
+  "updated_at": "2026-10-29 17:03:00",
   "total_records": 1195,
   "latest": {
-    "timestamp": 1793276253,
+    "timestamp": 1793280780,
     "date": "2026-10-29",
-    "price": 74720,
-    "price_toman": 74720,
-    "price_irr": 747200
+    "price": 74740,
+    "price_toman": 74740,
+    "price_irr": 747400
   },
   "history": [
     {
@@ -8372,11 +8372,11 @@
       "price_irr": 741200
     },
     {
-      "timestamp": 1793276253,
+      "timestamp": 1793280780,
       "date": "2026-10-29",
-      "price": 74720,
-      "price_toman": 74720,
-      "price_irr": 747200
+      "price": 74740,
+      "price_toman": 74740,
+      "price_irr": 747400
     }
   ]
 }
