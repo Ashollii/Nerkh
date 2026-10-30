@@ -3,14 +3,14 @@
   "title": "دلار نیوزیلند",
   "unit": "تومان",
   "timezone": "Asia/Tehran",
-  "updated_at": "2026-10-30 09:03:08",
+  "updated_at": "2026-10-30 10:17:40",
   "total_records": 1196,
   "latest": {
-    "timestamp": 1793338388,
+    "timestamp": 1793342860,
     "date": "2026-10-30",
-    "price": 153300,
-    "price_toman": 153300,
-    "price_irr": 1533000
+    "price": 153240,
+    "price_toman": 153240,
+    "price_irr": 1532400
   },
   "history": [
     {
@@ -8379,11 +8379,11 @@
       "price_irr": 1531400
     },
     {
-      "timestamp": 1793338388,
+      "timestamp": 1793342860,
       "date": "2026-10-30",
-      "price": 153300,
-      "price_toman": 153300,
-      "price_irr": 1533000
+      "price": 153240,
+      "price_toman": 153240,
+      "price_irr": 1532400
     }
   ]
 }
