@@ -3,14 +3,14 @@
   "title": "طلای ۱۸ عیار",
   "unit": "تومان",
   "timezone": "Asia/Tehran",
-  "updated_at": "2026-10-31 11:32:42",
+  "updated_at": "2026-10-31 13:32:57",
   "total_records": 1190,
   "latest": {
-    "timestamp": 1793433762,
+    "timestamp": 1793440977,
     "date": "2026-10-31",
-    "price": 25208920,
-    "price_toman": 25208920,
-    "price_irr": 252089200
+    "price": 25266630,
+    "price_toman": 25266630,
+    "price_irr": 252666300
   },
   "history": [
     {
@@ -10665,11 +10665,11 @@
       "price_irr": 257398800
     },
     {
-      "timestamp": 1793433762,
+      "timestamp": 1793440977,
       "date": "2026-10-31",
-      "price": 25208920,
-      "price_toman": 25208920,
-      "price_irr": 252089200
+      "price": 25266630,
+      "price_toman": 25266630,
+      "price_irr": 252666300
     }
   ]
 }
