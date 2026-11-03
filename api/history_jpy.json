@@ -3,14 +3,14 @@
   "title": "۱۰۰ ین ژاپن",
   "unit": "تومان",
   "timezone": "Asia/Tehran",
-  "updated_at": "2026-11-03 12:54:53",
+  "updated_at": "2026-11-03 14:32:23",
   "total_records": 1200,
   "latest": {
-    "timestamp": 1793697893,
+    "timestamp": 1793703743,
     "date": "2026-11-03",
-    "price": 174200,
-    "price_toman": 174200,
-    "price_irr": 1742000
+    "price": 173600,
+    "price_toman": 173600,
+    "price_irr": 1736000
   },
   "history": [
     {
@@ -8407,11 +8407,11 @@
       "price_irr": 1727000
     },
     {
-      "timestamp": 1793697893,
+      "timestamp": 1793703743,
       "date": "2026-11-03",
-      "price": 174200,
-      "price_toman": 174200,
-      "price_irr": 1742000
+      "price": 173600,
+      "price_toman": 173600,
+      "price_irr": 1736000
     }
   ]
 }
