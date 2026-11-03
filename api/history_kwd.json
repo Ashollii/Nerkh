@@ -3,14 +3,14 @@
   "title": "دینار کویت",
   "unit": "تومان",
   "timezone": "Asia/Tehran",
-  "updated_at": "2026-11-03 11:17:38",
+  "updated_at": "2026-11-03 12:32:48",
   "total_records": 1200,
   "latest": {
-    "timestamp": 1793692058,
+    "timestamp": 1793696568,
     "date": "2026-11-03",
-    "price": 879320,
-    "price_toman": 879320,
-    "price_irr": 8793200
+    "price": 884500,
+    "price_toman": 884500,
+    "price_irr": 8845000
   },
   "history": [
     {
@@ -8407,11 +8407,11 @@
       "price_irr": 8755000
     },
     {
-      "timestamp": 1793692058,
+      "timestamp": 1793696568,
       "date": "2026-11-03",
-      "price": 879320,
-      "price_toman": 879320,
-      "price_irr": 8793200
+      "price": 884500,
+      "price_toman": 884500,
+      "price_irr": 8845000
     }
   ]
 }
