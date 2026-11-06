@@ -3,10 +3,10 @@
   "title": "منات آذربایجان",
   "unit": "تومان",
   "timezone": "Asia/Tehran",
-  "updated_at": "2026-11-07 01:33:04",
+  "updated_at": "2026-11-07 02:48:25",
   "total_records": 1204,
   "latest": {
-    "timestamp": 1794002584,
+    "timestamp": 1794007105,
     "date": "2026-11-07",
     "price": 157800,
     "price_toman": 157800,
@@ -8435,7 +8435,7 @@
       "price_irr": 1578000
     },
     {
-      "timestamp": 1794002584,
+      "timestamp": 1794007105,
       "date": "2026-11-07",
       "price": 157800,
       "price_toman": 157800,
