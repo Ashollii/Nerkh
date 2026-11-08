@@ -10,7 +10,7 @@
 <br/>
 
 > [!NOTE]
-> 📅 **تاریخ:** ۱۷ آبان ۱۴۰۵ (2026-11-08) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۰۵:۴۶** (به وقت تهران)
+> 📅 **تاریخ:** ۱۷ آبان ۱۴۰۵ (2026-11-08) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۰۵:۴۷** (به وقت تهران)
 
 <br/>
 
@@ -87,7 +87,7 @@
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه بهار آزادی (طرح قدیم)</b></td>
-<td align="left"><b>نامشخص</b></td>
+<td align="left"><b>۲۵۱،۰۰۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
@@ -102,7 +102,7 @@
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه گرمی</b></td>
-<td align="left"><b>نامشخص</b></td>
+<td align="left"><b>۳۷،۰۰۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">✨</td>
@@ -112,7 +112,7 @@
 <tr>
 <td align="center">⚖️</td>
 <td><b>مثقال طلا (آبشده)</b></td>
-<td align="left"><b>نامشخص</b></td>
+<td align="left"><b>۱۱۰،۴۲۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🌐</td>
