@@ -3,14 +3,14 @@
   "title": "دلار استرالیا",
   "unit": "تومان",
   "timezone": "Asia/Tehran",
-  "updated_at": "2026-11-09 19:47:54",
+  "updated_at": "2026-11-09 21:02:40",
   "total_records": 1206,
   "latest": {
-    "timestamp": 1794241074,
+    "timestamp": 1794245560,
     "date": "2026-11-09",
-    "price": 182800,
-    "price_toman": 182800,
-    "price_irr": 1828000
+    "price": 183100,
+    "price_toman": 183100,
+    "price_irr": 1831000
   },
   "history": [
     {
@@ -8449,11 +8449,11 @@
       "price_irr": 1828000
     },
     {
-      "timestamp": 1794241074,
+      "timestamp": 1794245560,
       "date": "2026-11-09",
-      "price": 182800,
-      "price_toman": 182800,
-      "price_irr": 1828000
+      "price": 183100,
+      "price_toman": 183100,
+      "price_irr": 1831000
     }
   ]
 }
