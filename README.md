@@ -10,7 +10,7 @@
 <br/>
 
 > [!NOTE]
-> 📅 **تاریخ:** ۱۸ آبان ۱۴۰۵ (2026-11-09) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۱۴:۴۷** (به وقت تهران)
+> 📅 **تاریخ:** ۱۸ آبان ۱۴۰۵ (2026-11-09) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۱۶:۰۲** (به وقت تهران)
 
 <br/>
 
@@ -42,7 +42,7 @@
 <tr>
 <td align="center">🇪🇺</td>
 <td><b>یورو اروپا</b></td>
-<td align="left"><b>۲۹۷،۲۰۰ تومان</b></td>
+<td align="left"><b>۲۹۷،۱۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇦🇪</td>
@@ -57,17 +57,17 @@
 <tr>
 <td align="center">🇬🇧</td>
 <td><b>پوند انگلیس</b></td>
-<td align="left"><b>۳۵۲،۷۰۰ تومان</b></td>
+<td align="left"><b>۳۵۲،۶۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇦</td>
 <td><b>دلار کانادا</b></td>
-<td align="left"><b>۱۸۸،۵۰۰ تومان</b></td>
+<td align="left"><b>۱۸۸،۳۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇦🇺</td>
 <td><b>دلار استرالیا</b></td>
-<td align="left"><b>۱۸۳،۲۰۰ تومان</b></td>
+<td align="left"><b>۱۸۳،۱۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇳</td>
@@ -102,7 +102,7 @@
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه گرمی</b></td>
-<td align="left"><b>۳۷،۰۰۰،۰۰۰ تومان</b></td>
+<td align="left"><b>نامشخص</b></td>
 </tr>
 <tr>
 <td align="center">✨</td>
@@ -112,7 +112,7 @@
 <tr>
 <td align="center">⚖️</td>
 <td><b>مثقال طلا (آبشده)</b></td>
-<td align="left"><b>۱۱۱،۶۰۰،۰۰۰ تومان</b></td>
+<td align="left"><b>نامشخص</b></td>
 </tr>
 <tr>
 <td align="center">🌐</td>
@@ -127,7 +127,7 @@
 <tr>
 <td align="center">⛽</td>
 <td><b>نفت خام برنت / اوپک</b></td>
-<td align="left"><b>۸۹.۴۴ دلار</b></td>
+<td align="left"><b>۸۸.۱۲ دلار</b></td>
 </tr>
 
 </tbody>
