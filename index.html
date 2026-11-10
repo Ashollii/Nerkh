@@ -52,6 +52,7 @@
                     <a href="#" class="hover:text-blue-400 transition">خانه</a>
                     <a href="#crypto" class="hover:text-blue-400 transition">کریپتو زنده</a>
                     <a href="#calculator" class="hover:text-blue-400 transition">ماشین‌حساب</a>
+                    <a href="#gold-calculator" class="hover:text-blue-400 transition">محاسبه‌گر طلا</a>
                     <a href="#api-docs" class="hover:text-blue-400 transition">مستندات API</a>
                     <a href="https://github.com/Ashollii" target="_blank" rel="noopener" class="flex items-center gap-1.5 text-blue-400 hover:text-blue-300 transition">
                         <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18.718-1.545 6.471-2.247 9.421-.297 1.248-.87 1.442-1.42.923l-3.87-2.855-1.868 1.8c-.207.2-.38.37-.779.37l.278-3.945 7.18-6.49c.313-.278-.068-.433-.487-.155l-8.874 5.589-3.824-1.196c-.832-.26-.848-.832.174-1.233l14.938-5.759c.692-.25 1.298.165 1.056 1.43z"/></svg>
@@ -157,6 +158,59 @@
             </div>
             <div id="cryptoGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3"></div>
             <p class="text-[11px] text-slate-500 mt-3">قیمت‌ها به‌صورت زنده از کوین‌گکو به‌روز می‌شوند و معادل تومانی با نرخ دلار همین صفحه محاسبه می‌شود.</p>
+        </section>
+
+        <!-- Gold Purchase Calculator (Nabz formula) -->
+        <section id="gold-calculator" class="glass-card rounded-2xl p-6 border border-slate-800">
+            <h3 class="text-base font-extrabold text-white mb-2 flex items-center gap-2">
+                💍 محاسبه‌گر خرید طلا
+            </h3>
+            <p class="text-xs text-slate-400 mb-4">محاسبه فاکتور رسمی خرید طلا با اجرت ساخت، سود ۷٪ طلافروش و مالیات ۹٪ — نرخ هر گرم طلای ۱۸ عیار به‌صورت زنده از همین صفحه خوانده می‌شود و قابل ویرایش است.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mb-4">
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1.5" for="gcWeight">وزن طلا (گرم)</label>
+                    <input type="text" id="gcWeight" value="3" inputmode="decimal" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white font-mono text-base focus:outline-none focus:border-yellow-500 text-left" dir="ltr">
+                </div>
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1.5" for="gcAjrat">اجرت ساخت (درصد)</label>
+                    <input type="text" id="gcAjrat" value="12" inputmode="decimal" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white font-mono text-base focus:outline-none focus:border-yellow-500 text-left" dir="ltr">
+                </div>
+                <div>
+                    <label class="block text-[11px] text-slate-400 mb-1.5" for="gcRate">نرخ هر گرم ۱۸ عیار (تومان)</label>
+                    <input type="text" id="gcRate" value="" inputmode="numeric" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white font-mono text-base focus:outline-none focus:border-yellow-500 text-left" dir="ltr">
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-5">
+                <button type="button" onclick="gcPreset(1,10)" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-[11px] text-slate-300 hover:border-yellow-500/60 hover:text-yellow-300 transition">⚖️ ۱ گرم — اجرت ۱۰٪</button>
+                <button type="button" onclick="gcPreset(3,12)" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-[11px] text-slate-300 hover:border-yellow-500/60 hover:text-yellow-300 transition">⚖️ ۳ گرم — اجرت ۱۲٪</button>
+                <button type="button" onclick="gcPreset(5,15)" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-[11px] text-slate-300 hover:border-yellow-500/60 hover:text-yellow-300 transition">⚖️ ۵ گرم — اجرت ۱۵٪</button>
+                <button type="button" onclick="gcPreset(10,18)" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-[11px] text-slate-300 hover:border-yellow-500/60 hover:text-yellow-300 transition">⚖️ ۱۰ گرم — اجرت ۱۸٪</button>
+            </div>
+
+            <div class="max-w-3xl space-y-2 text-sm">
+                <div class="flex items-center justify-between bg-slate-900/60 border border-slate-800 rounded-xl px-4 py-2.5">
+                    <span class="text-slate-400 text-xs">قیمت طلای خام</span>
+                    <span id="gcBase" class="font-bold text-slate-100 font-mono">---</span>
+                </div>
+                <div class="flex items-center justify-between bg-slate-900/60 border border-slate-800 rounded-xl px-4 py-2.5">
+                    <span class="text-slate-400 text-xs">اجرت ساخت</span>
+                    <span id="gcAjratVal" class="font-bold text-slate-100 font-mono">---</span>
+                </div>
+                <div class="flex items-center justify-between bg-slate-900/60 border border-slate-800 rounded-xl px-4 py-2.5">
+                    <span class="text-slate-400 text-xs">سود طلافروش (۷٪)</span>
+                    <span id="gcProfit" class="font-bold text-slate-100 font-mono">---</span>
+                </div>
+                <div class="flex items-center justify-between bg-slate-900/60 border border-slate-800 rounded-xl px-4 py-2.5">
+                    <span class="text-slate-400 text-xs">مالیات بر ارزش افزوده (۹٪)</span>
+                    <span id="gcVat" class="font-bold text-slate-100 font-mono">---</span>
+                </div>
+                <div class="flex items-center justify-between bg-yellow-500/10 border border-yellow-500/30 rounded-xl px-4 py-3">
+                    <span class="text-yellow-200 text-xs font-bold">💰 مبلغ نهایی پرداختی</span>
+                    <span id="gcFinal" class="text-base font-black text-yellow-300 font-mono">---</span>
+                </div>
+            </div>
         </section>
 
         <section id="calculator" class="glass-card rounded-2xl p-6 border border-slate-800">
@@ -300,6 +354,7 @@
             renderApiDocs();
             await loadActiveAssetHistory();
             initCalculator();
+            initGoldCalculator();
         }
 
         async function fetchMarketSummary() {
@@ -486,6 +541,55 @@
                 toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
                 setTimeout(() => toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2'), 2500);
             });
+        }
+
+        // --- Gold purchase calculator (Nabz formula: ajrat on base, 7% profit on base+ajrat, 9% VAT on ajrat+profit) ---
+        function gcParseNum(v) {
+            if (v === null || v === undefined) return 0;
+            const en = String(v).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d));
+            const n = parseFloat(en.replace(/[^0-9.]/g, ''));
+            return isNaN(n) ? 0 : n;
+        }
+
+        function initGoldCalculator() {
+            const rateInput = document.getElementById('gcRate');
+            if (!rateInput) return;
+            const live = Number(marketData.gold_18k) || 0;
+            if (live > 0) rateInput.value = Math.round(live).toLocaleString('en-US');
+            ['gcWeight', 'gcAjrat', 'gcRate'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('input', updateGoldCalc);
+            });
+            const rateEl = document.getElementById('gcRate');
+            rateEl.addEventListener('input', () => {
+                const raw = rateEl.value.replace(/[^0-9]/g, '');
+                rateEl.value = raw ? Number(raw).toLocaleString('en-US') : '';
+                updateGoldCalc();
+            });
+            updateGoldCalc();
+        }
+
+        function gcPreset(w, p) {
+            document.getElementById('gcWeight').value = w;
+            document.getElementById('gcAjrat').value = p;
+            updateGoldCalc();
+        }
+
+        function updateGoldCalc() {
+            const w = gcParseNum(document.getElementById('gcWeight').value);
+            const p = gcParseNum(document.getElementById('gcAjrat').value);
+            const rate = gcParseNum(document.getElementById('gcRate').value);
+            const base = w * rate;
+            const ajrat = base * p / 100;
+            const profit = (base + ajrat) * 0.07;
+            const vat = (ajrat + profit) * 0.09;
+            const final = base + ajrat + profit + vat;
+            const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = (rate > 0 && w > 0) ? formatNumber(Math.round(val)) + ' تومان' : '---'; };
+            set('gcBase', base);
+            set('gcAjratVal', ajrat);
+            set('gcProfit', profit);
+            set('gcVat', vat);
+            set('gcFinal', final);
         }
 
         function initCalculator() {
