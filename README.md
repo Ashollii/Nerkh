@@ -10,7 +10,7 @@
 <br/>
 
 > [!NOTE]
-> 📅 **تاریخ:** ۲۰ آبان ۱۴۰۵ (2026-11-11) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۱۳:۰۳** (به وقت تهران)
+> 📅 **تاریخ:** ۲۰ آبان ۱۴۰۵ (2026-11-11) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۱۴:۱۷** (به وقت تهران)
 
 <br/>
 
@@ -37,42 +37,42 @@
 <tr>
 <td align="center">🇺🇸</td>
 <td><b>دلار آمریکا</b></td>
-<td align="left"><b>۲۶۲،۴۶۸ تومان</b></td>
+<td align="left"><b>۲۶۲،۹۸۲ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇪🇺</td>
 <td><b>یورو اروپا</b></td>
-<td align="left"><b>۲۹۲،۴۰۰ تومان</b></td>
+<td align="left"><b>۲۹۳،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇦🇪</td>
 <td><b>درهم امارات</b></td>
-<td align="left"><b>۷۱،۴۷۰ تومان</b></td>
+<td align="left"><b>۷۱،۶۱۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇹🇷</td>
 <td><b>لیر ترکیه</b></td>
-<td align="left"><b>۵،۳۰۰ تومان</b></td>
+<td align="left"><b>۵،۳۱۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇬🇧</td>
 <td><b>پوند انگلیس</b></td>
-<td align="left"><b>۳۴۶،۱۰۰ تومان</b></td>
+<td align="left"><b>۳۴۷،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇦</td>
 <td><b>دلار کانادا</b></td>
-<td align="left"><b>۱۸۴،۷۰۰ تومان</b></td>
+<td align="left"><b>۱۸۵،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇦🇺</td>
 <td><b>دلار استرالیا</b></td>
-<td align="left"><b>۱۸۰،۲۰۰ تومان</b></td>
+<td align="left"><b>۱۸۰،۷۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇳</td>
 <td><b>یوان چین</b></td>
-<td align="left"><b>۳۹،۴۶۰ تومان</b></td>
+<td align="left"><b>۳۹،۵۲۰ تومان</b></td>
 </tr>
 
 <!-- بخش مسکوکات و طلا -->
@@ -82,22 +82,22 @@
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه تمام امامی (طرح جدید)</b></td>
-<td align="left"><b>۲۵۳،۵۰۰،۰۰۰ تومان</b></td>
+<td align="left"><b>۲۵۵،۵۰۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه بهار آزادی (طرح قدیم)</b></td>
-<td align="left"><b>۲۴۶،۰۰۰،۰۰۰ تومان</b></td>
+<td align="left"><b>۲۴۷،۰۰۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
 <td><b>نیم سکه بهار آزادی</b></td>
-<td align="left"><b>۱۳۳،۵۰۰،۰۰۰ تومان</b></td>
+<td align="left"><b>۱۳۴،۵۰۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
 <td><b>ربع سکه بهار آزادی</b></td>
-<td align="left"><b>۷۲،۵۰۰،۰۰۰ تومان</b></td>
+<td align="left"><b>۷۳،۰۰۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
@@ -117,7 +117,7 @@
 <tr>
 <td align="center">🌐</td>
 <td><b>انس جهانی طلا</b></td>
-<td align="left"><b>۴،۰۵۰.۳۸ دلار</b></td>
+<td align="left"><b>۴،۰۵۰.۲۹ دلار</b></td>
 </tr>
 
 <!-- کامودیتی -->
@@ -127,7 +127,7 @@
 <tr>
 <td align="center">⛽</td>
 <td><b>نفت خام برنت / اوپک</b></td>
-<td align="left"><b>۸۶.۸۷ دلار</b></td>
+<td align="left"><b>۸۷.۲۶ دلار</b></td>
 </tr>
 
 </tbody>
