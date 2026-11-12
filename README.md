@@ -10,7 +10,7 @@
 <br/>
 
 > [!NOTE]
-> 📅 **تاریخ:** ۲۱ آبان ۱۴۰۵ (2026-11-12) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۱۸:۰۳** (به وقت تهران)
+> 📅 **تاریخ:** ۲۱ آبان ۱۴۰۵ (2026-11-12) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۱۹:۱۸** (به وقت تهران)
 
 <br/>
 
@@ -37,17 +37,17 @@
 <tr>
 <td align="center">🇺🇸</td>
 <td><b>دلار آمریکا</b></td>
-<td align="left"><b>۲۶۹،۶۶۶ تومان</b></td>
+<td align="left"><b>۲۶۹،۸۸۶ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇪🇺</td>
 <td><b>یورو اروپا</b></td>
-<td align="left"><b>۲۹۹،۲۰۰ تومان</b></td>
+<td align="left"><b>۲۹۸،۵۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇦🇪</td>
 <td><b>درهم امارات</b></td>
-<td align="left"><b>۷۳،۴۳۰ تومان</b></td>
+<td align="left"><b>۷۳،۴۹۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇹🇷</td>
@@ -57,22 +57,22 @@
 <tr>
 <td align="center">🇬🇧</td>
 <td><b>پوند انگلیس</b></td>
-<td align="left"><b>۳۵۴،۳۰۰ تومان</b></td>
+<td align="left"><b>۳۵۳،۶۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇦</td>
 <td><b>دلار کانادا</b></td>
-<td align="left"><b>۱۸۹،۳۰۰ تومان</b></td>
+<td align="left"><b>۱۸۹،۲۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇦🇺</td>
 <td><b>دلار استرالیا</b></td>
-<td align="left"><b>۱۸۴،۱۰۰ تومان</b></td>
+<td align="left"><b>۱۸۳،۷۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇳</td>
 <td><b>یوان چین</b></td>
-<td align="left"><b>۴۰،۵۴۰ تومان</b></td>
+<td align="left"><b>۴۰،۵۶۰ تومان</b></td>
 </tr>
 
 <!-- بخش مسکوکات و طلا -->
@@ -87,7 +87,7 @@
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه بهار آزادی (طرح قدیم)</b></td>
-<td align="left"><b>نامشخص</b></td>
+<td align="left"><b>۲۴۷،۰۰۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
@@ -102,7 +102,7 @@
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه گرمی</b></td>
-<td align="left"><b>نامشخص</b></td>
+<td align="left"><b>۳۷،۰۰۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">✨</td>
@@ -127,7 +127,7 @@
 <tr>
 <td align="center">⛽</td>
 <td><b>نفت خام برنت / اوپک</b></td>
-<td align="left"><b>۸۶.۲۳ دلار</b></td>
+<td align="left"><b>۸۶.۴۹ دلار</b></td>
 </tr>
 
 </tbody>
