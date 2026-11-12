@@ -593,6 +593,18 @@ def main():
     market_data = {}
     all_history_map = {}
 
+    # Previous market.json (the checkout still holds the last committed
+    # one). Gold source rule (owner order 2026-11-12): gold_18k and
+    # gold_mesghal belong to the @NerkhFA channel sync, so their existing
+    # values are carried over in step 2 instead of alanchand's —
+    # alanchand's gold ran ~3% below the channel on 2026-11-12.
+    prev_market = {}
+    try:
+        with open("market.json", encoding="utf-8") as f:
+            prev_market = json.load(f)
+    except Exception:
+        prev_market = {}
+
     # 1. USD Calculation via AED
     resp_aed = session.get("https://alanchand.com/en/currencies-price/aed", timeout=12)
     resp_usd = session.get("https://alanchand.com/en/exchange-rates/aed-usd", timeout=12)
@@ -634,6 +646,8 @@ def main():
         futures = [executor.submit(fetch_single_asset, k, v) for k, v in tasks.items()]
         for future in as_completed(futures):
             key, live_p, hist = future.result()
+            if key in ("gold_18k", "gold_mesghal") and prev_market.get(key):
+                live_p = prev_market[key]  # channel gold wins; see above
             market_data[key] = live_p
             all_history_map[key] = update_asset_history(key, live_p, history_items=hist)
 

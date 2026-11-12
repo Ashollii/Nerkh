@@ -108,16 +108,13 @@ def to_epoch(v):
     return 0
 
 
-def main():
-    try:
-        page = fetch(CHANNEL_URL)
-    except Exception as e:
-        print("RESULT error fetch:", e)
-        return 2
-    chunks = re.split(r'data-post="NerkhFA/\d+"', page)[1:]
+def collect(page):
+    """Parse one preview page -> (boards, fardayi, ounce, oldest_post_id)."""
+    ids = [int(x) for x in re.findall(r'data-post="NerkhFA/(\d+)"', page)]
     boards = []
     fardayi = []  # (epoch, usd sell)
     ounce = None
+    chunks = re.split(r'data-post="NerkhFA/\d+"', page)[1:]
     for ch in chunks:
         tm = re.search(r'datetime="([^"]+)"', ch)
         if not tm:
@@ -137,8 +134,34 @@ def main():
                 fardayi.append((epoch, v))
         if "اونس طلا" in text:
             v = num_after(text, "اونس طلا")
-            if v:
+            if v and (ounce is None or epoch > ounce[0]):
                 ounce = (epoch, v)
+    return boards, fardayi, ounce, (min(ids) if ids else None)
+
+
+def main():
+    # The preview page shows only the newest ~20 posts; overnight the
+    # newest rates board can scroll off it (the recurring "no board post
+    # parsed" failures, e.g. 2026-11-12 04:31 Tehran). Walk back with
+    # ?before= until a board is found (max 5 pages).
+    boards = []
+    fardayi = []  # (epoch, usd sell)
+    ounce = None
+    url = CHANNEL_URL
+    for _ in range(5):
+        try:
+            page = fetch(url)
+        except Exception as e:
+            print("RESULT error fetch:", e)
+            return 2
+        b, f, o, oldest = collect(page)
+        boards += b
+        fardayi += f
+        if o and (ounce is None or o[0] > ounce[0]):
+            ounce = o
+        if boards or not oldest:
+            break
+        url = f"{CHANNEL_URL}?before={oldest}"
     if not boards:
         print("RESULT error no board post parsed")
         return 2
