@@ -588,16 +588,83 @@ def update_readme(market_data):
     print("README.md updated successfully.")
 
 
+# --- TGJU source (owner order 2026-11-14: ALL prices from tgju.org) ---
+# tgju slug -> (asset key, mode). Modes: "irr" = Rial/10 -> Toman
+# (TGJU's jpy row is already per-100, like ours); "irr100" = TGJU quotes
+# per 1 unit but our convention is per 100 (krw/iqd/amd/syp), so
+# Rial*10 -> Toman-per-100; "usd" = plain USD float (the ounce).
+TGJU_SOURCES = {
+    "geram18": ("gold_18k", "irr"), "mesghal": ("gold_mesghal", "irr"),
+    "sekee": ("coin_emami", "irr"), "sekeb": ("coin_bahar", "irr"),
+    "nim": ("coin_half", "irr"), "rob": ("coin_quarter", "irr"),
+    "gerami": ("coin_gram", "irr"), "ons": ("usd_xau", "usd"),
+    "price_dollar_rl": ("usd", "irr"), "price_eur": ("eur", "irr"),
+    "price_aed": ("aed", "irr"), "price_gbp": ("gbp", "irr"),
+    "price_try": ("try", "irr"), "price_chf": ("chf", "irr"),
+    "price_cny": ("cny", "irr"), "price_jpy": ("jpy", "irr"),
+    "price_krw": ("krw", "irr100"), "price_cad": ("cad", "irr"),
+    "price_aud": ("aud", "irr"), "price_nzd": ("nzd", "irr"),
+    "price_sgd": ("sgd", "irr"), "price_inr": ("inr", "irr"),
+    "price_pkr": ("pkr", "irr"), "price_iqd": ("iqd", "irr100"),
+    "price_syp": ("syp", "irr100"), "price_afn": ("afn", "irr"),
+    "price_dkk": ("dkk", "irr"), "price_sek": ("sek", "irr"),
+    "price_nok": ("nok", "irr"), "price_sar": ("sar", "irr"),
+    "price_qar": ("qar", "irr"), "price_omr": ("omr", "irr"),
+    "price_kwd": ("kwd", "irr"), "price_bhd": ("bhd", "irr"),
+    "price_myr": ("myr", "irr"), "price_thb": ("thb", "irr"),
+    "price_hkd": ("hkd", "irr"), "price_rub": ("rub", "irr"),
+    "price_azn": ("azn", "irr"), "price_amd": ("amd", "irr100"),
+    "price_gel": ("gel", "irr"), "price_kgs": ("kgs", "irr"),
+    "price_tjs": ("tjs", "irr"), "price_tmt": ("tmt", "irr"),
+}
+
+
+def fetch_tgju_prices():
+    """One GET of the tgju.org homepage -> {asset key: price}.
+    Rows are server-rendered as data-market-nameslug + data-price;
+    the homepage repeats its tables, so the first row per slug wins."""
+    try:
+        resp = session.get("https://www.tgju.org/", timeout=20)
+        if resp.status_code != 200:
+            print(f"TGJU fetch failed: HTTP {resp.status_code}")
+            return {}
+    except Exception as e:
+        print(f"TGJU fetch failed: {e}")
+        return {}
+    got = {}
+    for slug, raw in re.findall(
+            r'data-market-nameslug="([a-z0-9_\-]+)"[^>]*?'
+            r'data-price="([0-9,\.]+)"', resp.text):
+        spec = TGJU_SOURCES.get(slug)
+        if spec is None:
+            continue
+        key, mode = spec
+        if key in got:
+            continue
+        try:
+            v = float(raw.replace(",", ""))
+        except Exception:
+            continue
+        if mode == "irr":
+            got[key] = int(round(v / 10.0))
+        elif mode == "irr100":
+            got[key] = int(round(v * 10.0))
+        else:  # usd
+            got[key] = round(v, 2)
+    return got
+
+
 def main():
     print("Starting market extraction...")
     market_data = {}
     all_history_map = {}
 
     # Previous market.json (the checkout still holds the last committed
-    # one). Gold source rule (owner order 2026-11-12): gold_18k and
-    # gold_mesghal belong to the @NerkhFA channel sync, so their existing
-    # values are carried over in step 2 instead of alanchand's —
-    # alanchand's gold ran ~3% below the channel on 2026-11-12.
+    # one). Source rule (owner order 2026-11-14): ALL prices come from
+    # tgju.org. The previous file is only a fallback for the assets
+    # TGJU does not list (brl, ars) or a row missing in one snapshot.
+    # (Supersedes the 2026-11-12 rule that carried gold over from the
+    # @NerkhFA channel sync, and the alanchand scraping before it.)
     prev_market = {}
     try:
         with open("market.json", encoding="utf-8") as f:
@@ -605,51 +672,31 @@ def main():
     except Exception:
         prev_market = {}
 
-    # 1. USD Calculation via AED
-    resp_aed = session.get("https://alanchand.com/en/currencies-price/aed", timeout=12)
-    resp_usd = session.get("https://alanchand.com/en/exchange-rates/aed-usd", timeout=12)
-    aed_irr_hist = extract_js_array(resp_aed.text, "fullPriceData") if resp_aed.status_code == 200 else []
-    aed_usd_hist = extract_js_array(resp_usd.text, "fullPriceData") if resp_usd.status_code == 200 else []
+    # 1. All prices from tgju.org (owner order 2026-11-14): one
+    # homepage snapshot carries every market row. Abort the run if a
+    # core asset is missing, so a TGJU outage never rewrites
+    # market.json with fallback values under a fresh timestamp.
+    tgju = fetch_tgju_prices()
+    if not all(tgju.get(k) for k in ("usd", "gold_18k", "coin_emami")):
+        raise SystemExit(
+            f"TGJU core assets missing (got {len(tgju)} rows); "
+            "aborting without changes")
 
-    live_usd_toman = None
-    try:
-        soup_usd = BeautifulSoup(resp_usd.text, "lxml")
-        soup_aed = BeautifulSoup(resp_aed.text, "lxml")
-        usd_input = soup_usd.find("input", id="inputCalcValue") or soup_usd.find("input", id="outputCalcValue")
-        usd_rate = float(usd_input.get("data-rate")) if usd_input and usd_input.get("data-rate") else 0.2723
-        aed_input = soup_aed.find("input", attrs={"data-curr": "tmn"})
-        aed_raw = aed_input.get("data-price") or aed_input.get("value") if aed_input else None
-        if aed_raw:
-            live_usd_toman = int(round((float(str(aed_raw).replace(",", "").strip()) / 10.0) / usd_rate))
-    except Exception as e:
-        print(f"USD calc error: {e}")
+    market_data["usd"] = tgju["usd"]
+    all_history_map["usd"] = update_asset_history(
+        "usd", tgju["usd"], history_items=[])
 
-    usd_bootstrap_history = []
-    if aed_irr_hist and aed_usd_hist:
-        usd_rates = {
-            datetime.fromtimestamp(x["timestamp"], tz=TEHRAN_TZ).strftime("%Y-%m-%d"): x.get("price") or x.get("dolar_rate", 0.272257)
-            for x in aed_usd_hist
-        }
-        for item in aed_irr_hist:
-            d = datetime.fromtimestamp(item["timestamp"], tz=TEHRAN_TZ).strftime("%Y-%m-%d")
-            r = usd_rates.get(d, 0.272257)
-            if r > 0:
-                p_toman = int(round((item.get("price", 0) / 10.0) / r))
-                usd_bootstrap_history.append({"timestamp": item["timestamp"], "date": d, "price": p_toman, "price_toman": p_toman, "price_irr": p_toman * 10})
-
-    market_data["usd"] = live_usd_toman
-    all_history_map["usd"] = update_asset_history("usd", live_usd_toman, history_items=usd_bootstrap_history)
-
-    # 2. Parallel scraping of all other assets
-    tasks = {k: v for k, v in ALL_ASSETS.items() if k != "usd"}
-    with ThreadPoolExecutor(max_workers=10) as executor:
-        futures = [executor.submit(fetch_single_asset, k, v) for k, v in tasks.items()]
-        for future in as_completed(futures):
-            key, live_p, hist = future.result()
-            if key in ("gold_18k", "gold_mesghal") and prev_market.get(key):
-                live_p = prev_market[key]  # channel gold wins; see above
-            market_data[key] = live_p
-            all_history_map[key] = update_asset_history(key, live_p, history_items=hist)
+    # 2. Every other asset from the same TGJU snapshot; assets TGJU
+    # does not list (brl, ars) keep their previous file values.
+    for key in ALL_ASSETS:
+        if key == "usd":
+            continue
+        live_p = tgju.get(key)
+        if live_p is None:
+            live_p = prev_market.get(key)
+        market_data[key] = live_p
+        all_history_map[key] = update_asset_history(
+            key, live_p, history_items=[])
 
     # Alias gold_ounce to usd_xau
     if "usd_xau" in market_data:
