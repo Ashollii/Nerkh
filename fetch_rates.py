@@ -619,10 +619,35 @@ TGJU_SOURCES = {
 }
 
 
+def _tgju_apply(got, slug, raw):
+    spec = TGJU_SOURCES.get(slug)
+    if spec is None:
+        return
+    key, mode = spec
+    if key in got:
+        return
+    try:
+        v = float(str(raw).replace(",", ""))
+    except Exception:
+        return
+    if v <= 0:
+        return
+    if mode == "irr":
+        got[key] = int(round(v / 10.0))
+    elif mode == "irr100":
+        got[key] = int(round(v * 10.0))
+    else:  # usd
+        got[key] = round(v, 2)
+
+
 def fetch_tgju_prices():
     """One GET of the tgju.org homepage -> {asset key: price}.
-    Rows are server-rendered as data-market-nameslug + data-price;
-    the homepage repeats its tables, so the first row per slug wins."""
+    Three parse strategies, first hit per asset wins (hardening
+    2026-11-14, same as the bot — TGJU embedding HTML in its
+    data-title tooltip broke the original [^>]*? pattern for
+    gold/coin rows): A) nameslug -> data-price via a tempered scan
+    that stops at the next nameslug; B) per-row chunk data-price in
+    any attribute order; C) the row's first <td class="nf"> cell."""
     try:
         resp = session.get("https://www.tgju.org/", timeout=20)
         if resp.status_code != 200:
@@ -631,33 +656,76 @@ def fetch_tgju_prices():
     except Exception as e:
         print(f"TGJU fetch failed: {e}")
         return {}
+    html = resp.text
     got = {}
-    # NOTE (2026-11-14): TGJU's data-title tooltip now embeds HTML, so '>'
-    # appears inside the row tag before data-price; the old [^>]*? pattern
-    # could never reach data-price for gold/coin rows and the run aborted
-    # with "TGJU core assets missing". Stay inside the same row instead
-    # (stop at the next nameslug) and allow any chars in between.
     for slug, raw in re.findall(
             r'data-market-nameslug="([a-z0-9_\-]+)"'
             r'(?:(?!data-market-nameslug=).)*?'
-            r'data-price="([0-9,\.]+)"', resp.text, re.S):
-        spec = TGJU_SOURCES.get(slug)
-        if spec is None:
-            continue
-        key, mode = spec
-        if key in got:
-            continue
-        try:
-            v = float(raw.replace(",", ""))
-        except Exception:
-            continue
-        if mode == "irr":
-            got[key] = int(round(v / 10.0))
-        elif mode == "irr100":
-            got[key] = int(round(v * 10.0))
-        else:  # usd
-            got[key] = round(v, 2)
+            r'data-price="([0-9,\.]+)"', html, re.S):
+        _tgju_apply(got, slug, raw)
+    if len(got) < len(TGJU_SOURCES):
+        for chunk in html.split("<tr"):
+            m = re.search(r'data-market-nameslug="([a-z0-9_\-]+)"',
+                          chunk)
+            if not m:
+                continue
+            slug = m.group(1)
+            spec = TGJU_SOURCES.get(slug)
+            if spec is None or spec[0] in got:
+                continue
+            p = re.search(r'data-price="([0-9,\.]+)"', chunk)
+            if p:
+                _tgju_apply(got, slug, p.group(1))
+                continue
+            c = re.search(r'<td class="nf">\s*([0-9,\.]+)\s*</td>',
+                          chunk)
+            if c:
+                _tgju_apply(got, slug, c.group(1))
     return got
+
+
+def fetch_alanchand_fx():
+    """brl/ars live from alanchand — TGJU does not list them, and
+    until 2026-11-14 they sat frozen at their last file values.
+    Same extraction the pre-TGJU scraper used: the Product JSON-LD
+    price, else the calculator input's data-price (Rial -> Toman)."""
+    out = {}
+    for key in ("brl", "ars"):
+        try:
+            resp = session.get(
+                f"https://alanchand.com/en/currencies-price/{key}",
+                timeout=12)
+            if resp.status_code != 200:
+                continue
+            soup = BeautifulSoup(resp.text, "lxml")
+            val = None
+            for s in soup.find_all("script",
+                                   type="application/ld+json"):
+                try:
+                    c = json.loads(s.get_text(strip=True) or "{}")
+                except Exception:
+                    continue
+                if c.get("@type") == "Product":
+                    offers = c.get("offers", {})
+                    raw = float(offers.get("price", 0))
+                    if offers.get("priceCurrency") == "IRR":
+                        val = int(round(raw / 10.0))
+                    elif raw:
+                        val = int(round(raw))
+                    break
+            if val is None:
+                el = soup.find("input", attrs={"data-curr": "tmn"}) \
+                    or soup.find("input", id="inputCalcValue")
+                if el:
+                    raw = el.get("data-price") or el.get("value")
+                    if raw:
+                        val = int(round(float(
+                            str(raw).replace(",", "").strip()) / 10.0))
+            if val:
+                out[key] = val
+        except Exception as e:
+            print(f"alanchand {key} fetch failed: {e}")
+    return out
 
 
 def main():
@@ -683,17 +751,39 @@ def main():
     # core asset is missing, so a TGJU outage never rewrites
     # market.json with fallback values under a fresh timestamp.
     tgju = fetch_tgju_prices()
+
+    # Sanity band vs the previous file (2026-11-14 hardening): a
+    # scraped value more than 20% away from the previous file value
+    # is a mis-parse, not a market move — drop it. A dropped core
+    # asset aborts the run below rather than publishing wrong data.
+    for key in list(tgju):
+        prev_v = prev_market.get(key)
+        if prev_v and abs(tgju[key] - prev_v) > 0.20 * prev_v:
+            print(f"TGJU {key}={tgju[key]} outside sanity band vs "
+                  f"prev {prev_v}; dropped")
+            del tgju[key]
     if not all(tgju.get(k) for k in ("usd", "gold_18k", "coin_emami")):
         raise SystemExit(
             f"TGJU core assets missing (got {len(tgju)} rows); "
             "aborting without changes")
 
+    # 1b. brl/ars are not listed by TGJU: take them live from
+    # alanchand (their pre-TGJU source) under the same sanity band;
+    # on any failure step 2 keeps their previous file values.
+    for key, val in fetch_alanchand_fx().items():
+        prev_v = prev_market.get(key)
+        if prev_v and abs(val - prev_v) > 0.20 * prev_v:
+            print(f"alanchand {key}={val} outside sanity band vs "
+                  f"prev {prev_v}; keeping prev")
+            continue
+        tgju[key] = val
+
     market_data["usd"] = tgju["usd"]
     all_history_map["usd"] = update_asset_history(
         "usd", tgju["usd"], history_items=[])
 
-    # 2. Every other asset from the same TGJU snapshot; assets TGJU
-    # does not list (brl, ars) keep their previous file values.
+    # 2. Every other asset from the same TGJU snapshot; brl/ars come
+    # from alanchand (step 1b) or keep their previous file values.
     for key in ALL_ASSETS:
         if key == "usd":
             continue
