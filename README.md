@@ -10,7 +10,7 @@
 <br/>
 
 > [!NOTE]
-> 📅 **تاریخ:** ۲۳ آبان ۱۴۰۵ (2026-11-14) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۲۰:۰۲** (به وقت تهران)
+> 📅 **تاریخ:** ۲۳ آبان ۱۴۰۵ (2026-11-14) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۲۰:۴۸** (به وقت تهران)
 
 <br/>
 
@@ -42,12 +42,12 @@
 <tr>
 <td align="center">🇪🇺</td>
 <td><b>یورو اروپا</b></td>
-<td align="left"><b>۲۹۸،۱۲۰ تومان</b></td>
+<td align="left"><b>۲۹۷،۸۸۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇦🇪</td>
 <td><b>درهم امارات</b></td>
-<td align="left"><b>۷۳،۸۲۰ تومان</b></td>
+<td align="left"><b>۷۳،۷۶۳ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇹🇷</td>
@@ -57,22 +57,22 @@
 <tr>
 <td align="center">🇬🇧</td>
 <td><b>پوند انگلیس</b></td>
-<td align="left"><b>۳۵۶،۷۷۰ تومان</b></td>
+<td align="left"><b>۳۵۶،۴۹۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇦</td>
 <td><b>دلار کانادا</b></td>
-<td align="left"><b>۱۸۹،۲۷۰ تومان</b></td>
+<td align="left"><b>۱۸۹،۱۲۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇦🇺</td>
 <td><b>دلار استرالیا</b></td>
-<td align="left"><b>۱۸۲،۹۵۰ تومان</b></td>
+<td align="left"><b>۱۸۲،۸۱۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇳</td>
 <td><b>یوان چین</b></td>
-<td align="left"><b>۴۰،۴۷۰ تومان</b></td>
+<td align="left"><b>۴۰،۴۴۰ تومان</b></td>
 </tr>
 
 <!-- بخش مسکوکات و طلا -->
@@ -82,12 +82,12 @@
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه تمام امامی (طرح جدید)</b></td>
-<td align="left"><b>۲۵۲،۶۰۰،۰۰۰ تومان</b></td>
+<td align="left"><b>۲۵۲،۵۱۵،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه بهار آزادی (طرح قدیم)</b></td>
-<td align="left"><b>۲۴۵،۰۲۰،۰۰۰ تومان</b></td>
+<td align="left"><b>۲۴۵،۰۸۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
@@ -107,12 +107,12 @@
 <tr>
 <td align="center">✨</td>
 <td><b>طلای ۱۸ عیار (هر گرم)</b></td>
-<td align="left"><b>۲۴،۸۳۰،۱۰۰ تومان</b></td>
+<td align="left"><b>۲۴،۷۹۴،۵۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">⚖️</td>
 <td><b>مثقال طلا (آبشده)</b></td>
-<td align="left"><b>۱۰۷،۵۶۲،۰۰۰ تومان</b></td>
+<td align="left"><b>۱۰۷،۴۰۳،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🌐</td>
