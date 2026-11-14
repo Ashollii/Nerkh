@@ -632,9 +632,15 @@ def fetch_tgju_prices():
         print(f"TGJU fetch failed: {e}")
         return {}
     got = {}
+    # NOTE (2026-11-14): TGJU's data-title tooltip now embeds HTML, so '>'
+    # appears inside the row tag before data-price; the old [^>]*? pattern
+    # could never reach data-price for gold/coin rows and the run aborted
+    # with "TGJU core assets missing". Stay inside the same row instead
+    # (stop at the next nameslug) and allow any chars in between.
     for slug, raw in re.findall(
-            r'data-market-nameslug="([a-z0-9_\-]+)"[^>]*?'
-            r'data-price="([0-9,\.]+)"', resp.text):
+            r'data-market-nameslug="([a-z0-9_\-]+)"'
+            r'(?:(?!data-market-nameslug=).)*?'
+            r'data-price="([0-9,\.]+)"', resp.text, re.S):
         spec = TGJU_SOURCES.get(slug)
         if spec is None:
             continue
