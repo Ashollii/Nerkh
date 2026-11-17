@@ -3,14 +3,14 @@
   "title": "سامانی تاجیکستان",
   "unit": "تومان",
   "timezone": "Asia/Tehran",
-  "updated_at": "2026-11-17 14:02:37",
+  "updated_at": "2026-11-17 14:47:28",
   "total_records": 1214,
   "latest": {
-    "timestamp": 1794911557,
+    "timestamp": 1794914248,
     "date": "2026-11-17",
-    "price": 28130,
-    "price_toman": 28130,
-    "price_irr": 281300
+    "price": 28160,
+    "price_toman": 28160,
+    "price_irr": 281600
   },
   "history": [
     {
@@ -8505,11 +8505,11 @@
       "price_irr": 282800
     },
     {
-      "timestamp": 1794911557,
+      "timestamp": 1794914248,
       "date": "2026-11-17",
-      "price": 28130,
-      "price_toman": 28130,
-      "price_irr": 281300
+      "price": 28160,
+      "price_toman": 28160,
+      "price_irr": 281600
     }
   ]
 }

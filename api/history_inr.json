@@ -3,14 +3,14 @@
   "title": "روپیه هند",
   "unit": "تومان",
   "timezone": "Asia/Tehran",
-  "updated_at": "2026-11-17 14:02:37",
+  "updated_at": "2026-11-17 14:47:28",
   "total_records": 1214,
   "latest": {
-    "timestamp": 1794911557,
+    "timestamp": 1794914248,
     "date": "2026-11-17",
-    "price": 2862,
-    "price_toman": 2862,
-    "price_irr": 28620
+    "price": 2866,
+    "price_toman": 2866,
+    "price_irr": 28660
   },
   "history": [
     {
@@ -8505,11 +8505,11 @@
       "price_irr": 28610
     },
     {
-      "timestamp": 1794911557,
+      "timestamp": 1794914248,
       "date": "2026-11-17",
-      "price": 2862,
-      "price_toman": 2862,
-      "price_irr": 28620
+      "price": 2866,
+      "price_toman": 2866,
+      "price_irr": 28660
     }
   ]
 }
