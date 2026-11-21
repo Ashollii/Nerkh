@@ -10,7 +10,7 @@
 <br/>
 
 > [!NOTE]
-> 📅 **تاریخ:** ۳۰ آبان ۱۴۰۵ (2026-11-21) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۱۹:۴۸** (به وقت تهران)
+> 📅 **تاریخ:** ۳۰ آبان ۱۴۰۵ (2026-11-21) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۲۰:۳۳** (به وقت تهران)
 
 <br/>
 
@@ -37,17 +37,17 @@
 <tr>
 <td align="center">🇺🇸</td>
 <td><b>دلار آمریکا</b></td>
-<td align="left"><b>۲۶۸،۹۷۰ تومان</b></td>
+<td align="left"><b>۲۶۸،۹۶۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇪🇺</td>
 <td><b>یورو اروپا</b></td>
-<td align="left"><b>۲۹۵،۵۷۰ تومان</b></td>
+<td align="left"><b>۲۹۵،۵۶۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇦🇪</td>
 <td><b>درهم امارات</b></td>
-<td align="left"><b>۷۳،۲۷۷ تومان</b></td>
+<td align="left"><b>۷۳،۲۷۴ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇹🇷</td>
@@ -57,17 +57,17 @@
 <tr>
 <td align="center">🇬🇧</td>
 <td><b>پوند انگلیس</b></td>
-<td align="left"><b>۳۵۲،۱۰۰ تومان</b></td>
+<td align="left"><b>۳۵۲،۰۹۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇦</td>
 <td><b>دلار کانادا</b></td>
-<td align="left"><b>۱۸۷،۵۸۰ تومان</b></td>
+<td align="left"><b>۱۸۷،۵۷۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇦🇺</td>
 <td><b>دلار استرالیا</b></td>
-<td align="left"><b>۱۷۸،۱۹۰ تومان</b></td>
+<td align="left"><b>۱۷۸،۱۸۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇳</td>
@@ -82,17 +82,17 @@
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه تمام امامی (طرح جدید)</b></td>
-<td align="left"><b>۲۳۶،۹۶۰،۰۰۰ تومان</b></td>
+<td align="left"><b>۲۳۶،۷۳۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه بهار آزادی (طرح قدیم)</b></td>
-<td align="left"><b>۲۲۷،۳۵۰،۰۰۰ تومان</b></td>
+<td align="left"><b>۲۲۷،۲۹۵،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
 <td><b>نیم سکه بهار آزادی</b></td>
-<td align="left"><b>۱۲۵،۳۶۰،۰۰۰ تومان</b></td>
+<td align="left"><b>۱۲۵،۲۹۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
@@ -107,12 +107,12 @@
 <tr>
 <td align="center">✨</td>
 <td><b>طلای ۱۸ عیار (هر گرم)</b></td>
-<td align="left"><b>۲۲،۹۴۶،۱۰۰ تومان</b></td>
+<td align="left"><b>۲۲،۹۴۷،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">⚖️</td>
 <td><b>مثقال طلا (آبشده)</b></td>
-<td align="left"><b>۹۹،۴۰۱،۰۰۰ تومان</b></td>
+<td align="left"><b>۹۹،۳۹۶،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🌐</td>
