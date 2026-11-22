@@ -3,7 +3,7 @@
   "gold_mesghal": 101702000,
   "gold_18k": 23458400,
   "coin_emami": 243155000,
-  "coin_bahar": 230120000,
+  "coin_bahar": 230150000,
   "coin_half": 128410000,
   "coin_quarter": 70380000,
   "coin_gram": 33010000,
@@ -47,9 +47,9 @@
   "ars": 170,
   "gold_ounce": 3535.0,
   "oil": "83.41",
-  "updated_at": "2026-11-23 00:03:16",
+  "updated_at": "2026-11-23 00:47:53",
   "date": "2026-11-23",
   "date_shamsi": "1405/09/02",
   "date_shamsi_full": "۲ آذر ۱۴۰۵",
-  "time": "00:03"
+  "time": "00:47"
 }
