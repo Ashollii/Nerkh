@@ -10,7 +10,7 @@
 <br/>
 
 > [!NOTE]
-> 📅 **تاریخ:** ۲ آذر ۱۴۰۵ (2026-11-23) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۱۹:۴۸** (به وقت تهران)
+> 📅 **تاریخ:** ۲ آذر ۱۴۰۵ (2026-11-23) &nbsp;|&nbsp; ⏱ **ساعت آخرین بروزرسانی:** **۲۰:۳۲** (به وقت تهران)
 
 <br/>
 
@@ -42,7 +42,7 @@
 <tr>
 <td align="center">🇪🇺</td>
 <td><b>یورو اروپا</b></td>
-<td align="left"><b>۲۹۶،۲۸۰ تومان</b></td>
+<td align="left"><b>۲۹۶،۱۱۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇦🇪</td>
@@ -57,7 +57,7 @@
 <tr>
 <td align="center">🇬🇧</td>
 <td><b>پوند انگلیس</b></td>
-<td align="left"><b>۳۵۳،۲۹۰ تومان</b></td>
+<td align="left"><b>۳۵۳،۳۲۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇦</td>
@@ -67,7 +67,7 @@
 <tr>
 <td align="center">🇦🇺</td>
 <td><b>دلار استرالیا</b></td>
-<td align="left"><b>۱۷۹،۷۲۰ تومان</b></td>
+<td align="left"><b>۱۷۹،۸۳۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🇨🇳</td>
@@ -82,12 +82,12 @@
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه تمام امامی (طرح جدید)</b></td>
-<td align="left"><b>۲۵۱،۶۱۵،۰۰۰ تومان</b></td>
+<td align="left"><b>۲۵۱،۵۹۵،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
 <td><b>سکه بهار آزادی (طرح قدیم)</b></td>
-<td align="left"><b>۲۳۸،۵۱۰،۰۰۰ تومان</b></td>
+<td align="left"><b>۲۳۸،۵۰۰،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🟡</td>
@@ -112,12 +112,12 @@
 <tr>
 <td align="center">⚖️</td>
 <td><b>مثقال طلا (آبشده)</b></td>
-<td align="left"><b>۱۰۴،۳۵۲،۰۰۰ تومان</b></td>
+<td align="left"><b>۱۰۴،۳۴۸،۰۰۰ تومان</b></td>
 </tr>
 <tr>
 <td align="center">🌐</td>
 <td><b>انس جهانی طلا</b></td>
-<td align="left"><b>۳،۶۷۱.۱۱ دلار</b></td>
+<td align="left"><b>۳،۶۶۱.۴۱ دلار</b></td>
 </tr>
 
 <!-- کامودیتی -->
@@ -127,7 +127,7 @@
 <tr>
 <td align="center">⛽</td>
 <td><b>نفت خام برنت / اوپک</b></td>
-<td align="left"><b>۸۰.۱۳ دلار</b></td>
+<td align="left"><b>۸۰.۳۸ دلار</b></td>
 </tr>
 
 </tbody>
