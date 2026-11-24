@@ -7,7 +7,7 @@
   "coin_half": 141120000,
   "coin_quarter": 77840000,
   "coin_gram": 38000000,
-  "usd_xau": 3556.38,
+  "usd_xau": 3556.12,
   "eur": 311680,
   "aed": 77250,
   "try": 5620,
@@ -45,11 +45,11 @@
   "syp": 233400,
   "brl": 48260,
   "ars": 179,
-  "gold_ounce": 3556.38,
-  "oil": "81.50",
-  "updated_at": "2026-11-24 23:48:08",
-  "date": "2026-11-24",
-  "date_shamsi": "1405/09/03",
-  "date_shamsi_full": "۳ آذر ۱۴۰۵",
-  "time": "23:48"
+  "gold_ounce": 3556.12,
+  "oil": "81.40",
+  "updated_at": "2026-11-25 00:33:06",
+  "date": "2026-11-25",
+  "date_shamsi": "1405/09/04",
+  "date_shamsi_full": "۴ آذر ۱۴۰۵",
+  "time": "00:33"
 }
