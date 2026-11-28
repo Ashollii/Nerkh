@@ -1,11 +1,11 @@
 {
   "usd": 297700,
-  "gold_mesghal": 114823000,
-  "gold_18k": 26507400,
-  "coin_emami": 269575000,
-  "coin_bahar": 260180000,
-  "coin_half": 144000000,
-  "coin_quarter": 77930000,
+  "gold_mesghal": 114701000,
+  "gold_18k": 26478800,
+  "coin_emami": 269505000,
+  "coin_bahar": 261380000,
+  "coin_half": 143850000,
+  "coin_quarter": 77730000,
   "coin_gram": 38000000,
   "usd_xau": 3644.05,
   "eur": 326690,
@@ -47,9 +47,9 @@
   "ars": 188,
   "gold_ounce": 3644.05,
   "oil": "83.08",
-  "updated_at": "2026-11-28 15:47:44",
+  "updated_at": "2026-11-28 16:34:54",
   "date": "2026-11-28",
   "date_shamsi": "1405/09/07",
   "date_shamsi_full": "۷ آذر ۱۴۰۵",
-  "time": "15:47"
+  "time": "16:34"
 }
